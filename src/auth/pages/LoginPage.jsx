@@ -17,7 +17,7 @@ export const LoginPage = () => {
           <Grid //Item del form => contenido => 
             item xs={12} sx={{mt:2}}>
               <TextField
-                label= "correo"
+                label= "Correo"
                 type="email"
                 placeholder="correo@google.com"
                 fullWidth //Toma todo el ancho posible
@@ -27,9 +27,9 @@ export const LoginPage = () => {
           <Grid //Item del form => contenido => 
             item xs={12} sx={{mt:2}}>
               <TextField
-                label= "contraseña"
+                label= "Contraseña"
                 type="passwrod"
-                placeholder="contraseña"
+                placeholder="Contraseña"
                 fullWidth //Toma todo el ancho posible
               />
           </Grid>
