@@ -6,7 +6,7 @@ import { JournalLayout } from '../layout/JournalLayout';
 export const JournalPage = () => {
   return (
     <JournalLayout>
-      <Typography> Metallica en Colombia 2024 </Typography>
+      <Typography> Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 </Typography>
       {/* NothingSelected */}
       {/* NoteView */}
     </JournalLayout>
