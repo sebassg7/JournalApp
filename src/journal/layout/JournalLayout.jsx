@@ -8,13 +8,14 @@ export const JournalLayout = ({children}) => {
     <Box // Actua como und div
     sx={{display: 'flex'}}>
 
-        <NavBar drawerWidth={drawerWidth}></NavBar>
+        <NavBar drawerWidth={drawerWidth}/>
 
-        <SideBar drawerWidth={drawerWidth}></SideBar>
+        <SideBar drawerWidth={drawerWidth}/>
 
         <Box
         component='main'
-        sx={{flexGrow: 1, p: 1}}>
+        sx={{flexGrow: 1, p: 3}}
+        >
 
             <Toolbar/>
             {children}

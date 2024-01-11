@@ -1,14 +1,12 @@
 import { Box,Divider,Drawer,Grid,List,ListItem,ListItemButton,ListItemIcon,ListItemText,Toolbar, Typography } from '@mui/material';
 import { TurnedInNot } from '@mui/icons-material';
 
-
-
 export const SideBar = ({ drawerWidth }) => {
   return (
     <Box
     component='nav'
     sx={{
-        width: {sm:{drawerWidth}},
+        width: { sm:drawerWidth },
         flexShrink:{sm:0}
     }}>
 
@@ -16,11 +14,12 @@ export const SideBar = ({ drawerWidth }) => {
         variant='permanent' // Esto puede ser temporary
         open //Por defecto es true
         sx={{
-            display:{xs:'block'},
+            display:{ xs:'block' },
             '& .MuiDrawer-paper' : {
                 boxSizing: 'border-box',
                 width: drawerWidth,
-        }}}>
+        }
+        }}>
         
             <Toolbar>
                 <Typography
