@@ -1,17 +1,27 @@
-// import { MailOutline } from '@mui/icons-material';
-// import { Typography } from '@mui/material';
+import { AddOutlined, MailOutline } from '@mui/icons-material';
+import { Typography, IconButton } from '@mui/material';
 import { JournalLayout } from '../layout/JournalLayout';
-// import { NothingSelectedView } from '../views';
-import { NoteView } from '../views';
-
+import { NothingSelectedView, NoteView } from '../views';
 
 
 export const JournalPage = () => {
   return (
     <JournalLayout>
       {/* <Typography> Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 </Typography> */}
-      {/* <NothingSelectedView/> */}
-      <NoteView/>
+      <NothingSelectedView/>
+      {/* <NoteView/> */}
+      <IconButton
+      size='large'
+      sx={{
+        color: 'white',
+        backgroundColor: 'error.main',
+        position:'fixed',
+        ':hover':{ backgroundColor:'error.main', opacity: 0.5 },
+        right: 50,
+        bottom:50,
+      }}>
+        <AddOutlined sx={{ fontSize:30 }}/>
+      </IconButton>
     </JournalLayout>
   )
 };
