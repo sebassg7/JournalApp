@@ -1,16 +1,38 @@
+import { useDispatch } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Google } from '@mui/icons-material';
 import { Button, Grid, TextField, Typography,Link } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 import { AuthLayout } from '../layout/AuthLayout';
+import { useForm } from '../../hooks';
+import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
 
 
 
 export const LoginPage = () => {
+
+  const dispatch = useDispatch();
+
+  const { email, password, onInputChange } = useForm({
+    email: 'sbss@gmail.com',
+    password: '123456'
+  });
+
+  const onSubmit = ( event ) => {
+    event.preventDefault();
+    dispatch(checkingAuthentication());
+  };
+
+  const onGoogleSignIn = () => {
+    dispatch(startGoogleSignIn());
+  };
+
   return (
   
     <AuthLayout title='Login'>
 
-      <form> 
+      <form
+      onSubmit={onSubmit}> 
         <Grid // Contenedor de form
           container> 
 
@@ -21,6 +43,9 @@ export const LoginPage = () => {
                 type="email"
                 placeholder="correo@google.com"
                 fullWidth //Toma todo el ancho posible
+                name='email'
+                value={ email }
+                onChange={ onInputChange }
               />
           </Grid>
 
@@ -28,9 +53,12 @@ export const LoginPage = () => {
             item xs={12} sx={{mt:2}}>
               <TextField
                 label= "Contraseña"
-                type="passwrod"
+                type="password"
                 placeholder="Contraseña"
                 fullWidth //Toma todo el ancho posible
+                name= 'password'
+                value={ password }
+                onChange={ onInputChange }
               />
           </Grid>
 
@@ -43,6 +71,7 @@ export const LoginPage = () => {
               xs={ 12 }
               sm={ 6 }>
                 <Button
+                type='submit'
                 variant='contained'
                 fullWidth>Login</Button>
               </Grid>
@@ -53,7 +82,8 @@ export const LoginPage = () => {
               sm={ 6 }>
                 <Button
                 variant='contained'
-                fullWidth>
+                fullWidth
+                onClick={onGoogleSignIn}>
                   <Google/> 
                   <Typography
                     sx={{ml:1}}>Google</Typography>
