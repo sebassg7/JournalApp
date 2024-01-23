@@ -2,13 +2,29 @@
 import { Button, Grid, TextField, Typography,Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { AuthLayout } from '../layout/AuthLayout';
+import { useForm } from '../../hooks';
+
+
+const formData = {
+  email: 'journal@gmail.com',
+  password: '123456',
+  displayName: 'Journal Aplication',
+};
 
 export const RegisterPage = () => {
+
+  const { displayName, email, password, onInputChange, formState } = useForm(formData);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log(formState);
+  };
+
   return (
   
     <AuthLayout title='Crear cuenta'>
 
-      <form> 
+      <form onSubmit={onSubmit} > 
         <Grid // Contenedor de form
           container> 
 
@@ -19,6 +35,22 @@ export const RegisterPage = () => {
                 type="text"
                 placeholder="Escribe tu nombre"
                 fullWidth //Toma todo el ancho posible
+                name='displayName'
+                value={displayName}
+                onChange={onInputChange}
+              />
+          </Grid>
+
+          <Grid //Item del form => contenido => 
+            item xs={12} sx={{mt:2}}>
+              <TextField
+                label= "Correo"
+                type="email"
+                placeholder="journal@mail.com"
+                fullWidth //Toma todo el ancho posible
+                name='email'
+                value={ email }
+                onChange={onInputChange}
               />
           </Grid>
 
@@ -26,9 +58,12 @@ export const RegisterPage = () => {
             item xs={12} sx={{mt:2}}>
               <TextField
                 label= "Contraseña"
-                type="passwrod"
+                type="password"
                 placeholder="Contraseña"
                 fullWidth //Toma todo el ancho posible
+                name='password'
+                value={ password }
+                onChange={onInputChange}
               />
           </Grid>
 
@@ -40,6 +75,7 @@ export const RegisterPage = () => {
               item
               xs={ 12 }>
                 <Button
+                type='submit'
                 variant='contained'
                 fullWidth>Crear cuenta</Button>
               </Grid>
