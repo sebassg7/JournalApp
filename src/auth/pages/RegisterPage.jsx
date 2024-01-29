@@ -1,13 +1,11 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 // import { Google } from '@mui/icons-material';
-import { Button, Grid, TextField, Typography,Link } from '@mui/material';
+import { Button, Grid, TextField, Typography,Link, Alert } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startCreatingUserWithEmailPassword } from '../../store/auth';
-
-
 
 
 const formData = {
@@ -29,6 +27,9 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const [formSubmitted, setformSubmitted] = useState(false);
+
+  const { status, errorMessage } = useSelector(state => state.auth);
+  const isCheckingAuthentication = useMemo(() => status === 'checking', [status]);
 
   const { 
           formState, displayName, email, password, onInputChange,  
@@ -102,13 +103,24 @@ export const RegisterPage = () => {
             container
             spacing={ 2 }
             sx={{ mb:2, mt:1 }}>
-              <Grid 
+
+          <Grid
+              item
+              xs={ 12 }
+              display={ !!errorMessage ? '' : 'none' }>
+            <Alert severity='error'>{ errorMessage }</Alert>
+          </Grid>    
+
+
+          <Grid 
               item
               xs={ 12 }>
                 <Button
+                disabled={ isCheckingAuthentication } 
                 type='submit'
                 variant='contained'
-                fullWidth>Crear cuenta</Button>
+                fullWidth>Crear cuenta
+                </Button>
               </Grid>
           </Grid>
 
