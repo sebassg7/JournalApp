@@ -67,29 +67,18 @@ export const LoginPage = () => {
                 onChange={ onInputChange }
               />
           </Grid>
-
-
-
-      {/* Código Nuevo */}
-      <Grid
-      container
-      display={ !!errorMessage ? '' : 'none' }
-      sx={{ mt:1 }}>
-        <Grid
-            item
-            xs={ 12 }>
-            <Alert severity='error'>{ errorMessage }</Alert>
-          </Grid>
-      </Grid>
           
-
-      {/* Código Nuevo */}
-
-
-
-
-
-
+          <Grid
+          container
+          display={ !!errorMessage ? '' : 'none' }
+          sx={{ mt:1 }}>
+            <Grid
+                item
+                xs={ 12 }>
+                <Alert severity='error'>{ errorMessage }</Alert>
+              </Grid>
+          </Grid>
+          
           <Grid
             container
             spacing={ 2 }

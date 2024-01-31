@@ -5,17 +5,17 @@ export const AuthLayout = ({children, title=''}) => {
 
     
     <Grid
-    container // Contenedor de toda la página
-    spacing={ 0 } // Espacio entre íconos
-    direction= "column"
-    alignItems="center"
-    justifyContent="center"
-    sx={{
-        minHeight: "100vh", //Ocupa toda la pantalla
-        backgroundColor: "primary.main", // Accedo al estilo que he creado
-        padding: 4,
-    }}
->
+        container // Contenedor de toda la página
+        spacing={ 0 } // Espacio entre íconos
+        direction= "column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{
+            minHeight: "100vh", //Ocupa toda la pantalla
+            backgroundColor: "primary.main", // Accedo al estilo que he creado
+            padding: 4,
+        }}
+    >
 
         <Grid 
             item //La caja del centro
