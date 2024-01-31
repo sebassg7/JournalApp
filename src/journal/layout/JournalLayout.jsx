@@ -6,7 +6,7 @@ const drawerWidth = '240px'; // Barra Lateral que mantiene un tamaño
 export const JournalLayout = ({children}) => {
   return (
     <Box // Actua como und div
-    sx={{display: 'flex'}}>
+    sx={{display: 'flex'}} className='animate__animated animate__fadeIn animate__faster'>
 
         <NavBar drawerWidth={drawerWidth}/>
 

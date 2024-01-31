@@ -17,6 +17,7 @@ export const NothingSelectedView = () => {
     }}
     >
         <Grid 
+        className='animate__animated animate__fadeIn animate__faster'
         item
         xs={12}>
             <StarOutline
