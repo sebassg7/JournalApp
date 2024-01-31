@@ -2,28 +2,31 @@ import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { Google } from '@mui/icons-material';
-import { Button, Grid, TextField, Typography,Link } from '@mui/material';
+import { Button, Grid, TextField, Typography, Link, Alert } from '@mui/material';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
-import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
+import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth';
 
+const formLogin = {
+    email: '',
+    password: '',
+};
 
 export const LoginPage = () => {
 
-  const { status } = useSelector(state => state.auth)
-
   const dispatch = useDispatch();
 
-  const { email, password, onInputChange } = useForm({
-    email: 'journal@gmail.com',
-    password: '123456'
-  });
+  const { status, errorMessage } = useSelector(state => state.auth);
+  
+
+  const { email, password, onInputChange, formState } = useForm(formLogin);
 
   const isAuthenticating = useMemo(() => status === 'checking', [status])
 
   const onSubmit = ( event ) => {
     event.preventDefault();
-    dispatch(checkingAuthentication());
+
+    dispatch(startLoginWithEmailPassword(formState));
   };
 
   const onGoogleSignIn = () => {
@@ -64,6 +67,28 @@ export const LoginPage = () => {
                 onChange={ onInputChange }
               />
           </Grid>
+
+
+
+      {/* Código Nuevo */}
+      <Grid
+      container
+      display={ !!errorMessage ? '' : 'none' }
+      sx={{ mt:1 }}>
+        <Grid
+            item
+            xs={ 12 }>
+            <Alert severity='error'>{ errorMessage }</Alert>
+          </Grid>
+      </Grid>
+          
+
+      {/* Código Nuevo */}
+
+
+
+
+
 
           <Grid
             container
