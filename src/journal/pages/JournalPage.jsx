@@ -8,8 +8,8 @@ export const JournalPage = () => {
   return (
     <JournalLayout>
       {/* <Typography> Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 </Typography> */}
-      {/* <NothingSelectedView/> */}
-      <NoteView/>
+      <NothingSelectedView/>
+      {/* <NoteView/> */}
       <IconButton
       size='large'
       sx={{
