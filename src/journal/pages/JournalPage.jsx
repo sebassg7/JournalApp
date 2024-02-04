@@ -10,8 +10,7 @@ export const JournalPage = () => {
 
   const dispatch = useDispatch();
 
-  const { isSaving } = useSelector( state => state.journal );
-  
+  const { isSaving, active } = useSelector( state => state.journal );
 
   const onClickNewNote = () => {
     dispatch(starNewNote());
@@ -19,9 +18,11 @@ export const JournalPage = () => {
 
   return (
     <JournalLayout>
-      {/* <Typography> Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 Metallica en Colombia 2024 </Typography> */}
-      <NothingSelectedView/>
-      {/* <NoteView/> */}
+
+    {
+      ( !!active ) ? ( <NoteView/> ) : ( <NothingSelectedView/> ) 
+    }
+
       <IconButton
       disabled={ isSaving  }
       onClick={onClickNewNote}
