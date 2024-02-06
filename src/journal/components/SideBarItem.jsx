@@ -9,7 +9,6 @@ export const SideBarItem = ({ title = '', body, id, date, imageUrls = [] }) => {
     const dispatch = useDispatch();
 
     const onClickNote = () => {
-        console.log('Estoy dando click');
         dispatch( setActiveNote( { title, body, id, date, imageUrls }) );
     };
 
