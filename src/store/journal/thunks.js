@@ -39,7 +39,9 @@ export const startLoadingNotes = () => {
         const { uid } = getState().auth;
         if( !uid ) throw new Error( 'El UID del usuario no esta establecido' );
         const notes = await loadNotes( uid );
-
         dispatch(setNotes(notes));
     }
 };
+
+
+

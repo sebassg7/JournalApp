@@ -1,10 +1,17 @@
 import { TurnedInNot } from '@mui/icons-material';
 import { ListItem, ListItemButton, ListItemIcon, ListItemText, Grid } from '@mui/material';
 import { useMemo } from 'react';
+import { useDispatch } from 'react-redux';
+import { setActiveNote } from '../../store/journal';
 
-export const SideBarItem = ({ id, title, body}) => {
+export const SideBarItem = ({ title = '', body, id, date, imageUrls = [] }) => {
 
-    // const newTitle = useMemo(() =>)
+    const dispatch = useDispatch();
+
+    const onClickNote = () => {
+        console.log('Estoy dando click');
+        dispatch( setActiveNote( { title, body, id, date, imageUrls }) );
+    };
 
     const newTitle = useMemo(() => {
 
@@ -17,7 +24,7 @@ export const SideBarItem = ({ id, title, body}) => {
     <ListItem 
         key={ id } 
         disablePadding>
-        <ListItemButton>
+        <ListItemButton onClick={onClickNote} >
             <ListItemIcon>
                 <TurnedInNot/>
             </ListItemIcon>
