@@ -16,11 +16,11 @@ export const fileUpload = async( file ) => {
             body: formData,
         });
 
-        console.log(resp);
+        
         if( !resp.ok ) throw new Error( 'No se pudo subir la imagen' );
 
         const clodResp = await resp.json();
-        console.log({ clodResp });
+        
 
         return clodResp.secure_url;
 
@@ -29,4 +29,4 @@ export const fileUpload = async( file ) => {
         console.log(error);
         throw new Error( error.message )
     }
-}
+};
