@@ -57,13 +57,20 @@ export const journalSlice = createSlice({
             state.isSaving = false;
         },
 
+        clearNotesLogout: ( state ) => {
+            state.isSaving = false;
+            state.messageSaved = '';
+            state.notes = [];
+            state.active = null;
+        },
+
         deleteNoteById: ( state, action ) => {
 
         },
     },
 });
 
-//Action creators are generated for each case reducer function
+//Action creators (function) are generated for each case reducer function
 export const { 
     savingNewNote,
     addNewEmptyNote,
@@ -72,5 +79,6 @@ export const {
     setSaving,
     updateNote,
     setPhotosToActiveNote,
+    clearNotesLogout,
     deleteNoteById,
 } = journalSlice.actions;
