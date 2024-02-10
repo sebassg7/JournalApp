@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 
-import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import { DeleteOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
 import { Grid, Typography, Button, TextField, IconButton } from '@mui/material';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
@@ -8,7 +8,7 @@ import 'sweetalert2/dist/sweetalert2.css';
 import { ImageGallery } from '../components';
 import { useForm } from '../../hooks/useForm';
 import { useRedux } from '../../hooks';
-import { setActiveNote, startSaveNote, startUploadingFiles } from '../../store/journal';
+import { setActiveNote, startDeletingNote, startSaveNote, startUploadingFiles } from '../../store/journal';
 
 export const NoteView = () => {
 
@@ -48,9 +48,14 @@ export const NoteView = () => {
 
         dispatch( startUploadingFiles( target.files ) );
     };
+
+    const onDelete = () => {
+        dispatch( startDeletingNote() );
+    };
     
 
   return (
+
     <Grid
     className='animate__animated animate__fadeIn animate__faster'
     container
@@ -60,12 +65,16 @@ export const NoteView = () => {
     sx={{
         mb:1
     }}>
+
         <Grid
         item>
             <Typography
             fontSize={39}
             fontWeight='light'>{dateString}</Typography>
         </Grid>
+
+        <Grid 
+            item>
 
         <input 
             type="file"
@@ -81,9 +90,6 @@ export const NoteView = () => {
             onClick={ () => fileInputRef.current.click() }>
             <UploadOutlined/>
         </IconButton>
-
-        <Grid
-        item>
             <Button
             disabled={isSaving}
             onClick={onSaveNote}
@@ -97,37 +103,48 @@ export const NoteView = () => {
                     mr:1
                     }}/>
                     Guardar
-            </Button>
-            
+            </Button>           
         </Grid>
-            <TextField // Es una caja donde va texto
-            type="text" //Para que se utiliza esa caja
-            variant="filled" //Cuando se pasa el ratón por encima, se torna gris
-            fullWidth //Ocupa todo el ancho posible
-            placeholder="Ingrese un título"
-            label="Título"
-            sx={{
-                border: 'none', // Se quita el borde a la caja
-                mb:1
-            }}
-            name='title'
-            value={ title }
-            onChange={ onInputChange }
-            />
-            <TextField 
-            type="text" 
-            variant="filled" 
-            fullWidth 
-            multiline
-            placeholder="¿Qué sucedió en el día de hoy?"
-            minRows='5'
-            name='body'
-            value={ body }
-            onChange={ onInputChange }
-            />
-        <Grid
-        container>
 
+        <Grid container>
+            <TextField // Es una caja donde va texto
+                type="text" //Para que se utiliza esa caja
+                variant="filled" //Cuando se pasa el ratón por encima, se torna gris
+                fullWidth //Ocupa todo el ancho posible
+                placeholder="Ingrese un título"
+                label="Título"
+                sx={{
+                    border: 'none', // Se quita el borde a la caja
+                    mb:1
+                }}
+                name='title'
+                value={ title }
+                onChange={ onInputChange }
+            />
+
+            <TextField 
+                type="text" 
+                variant="filled" 
+                fullWidth 
+                multiline
+                placeholder="¿Qué sucedió en el día de hoy?"
+                minRows='5'
+                name='body'
+                value={ body }
+                onChange={ onInputChange }
+            />
+        </Grid>
+        
+        <Grid
+            container
+            justifyContent='end'>
+                <Button
+                    onClick={ onDelete }
+                    sx={{ mt: 2 }}
+                    color='error'>
+                    <DeleteOutline/>
+                    Borrar
+                </Button>
         </Grid>
 
         {/* Images Gallery */}
