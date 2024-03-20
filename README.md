@@ -1,6 +1,16 @@
-# Journal APP
+# Calendario de Eventos
 
-La Journal APP es una aplicación que permite a los usuarios validar su identidad o registrarse para acceder a un diario personal. Una vez autenticados, los usuarios pueden agregar eventos que han ocurrido durante el día, incluyendo la fecha y descripciones. La aplicación proporciona funciones para crear, leer, actualizar y eliminar eventos.
+La aplicación de Calendario de Eventos proporciona una interfaz intuitiva basada en un calendario, donde los usuarios pueden gestionar y registrar eventos de manera eficiente. Las principales características de la aplicación incluyen:
+
+- **Interfaz de Calendario**: La interfaz principal de la aplicación es un calendario interactivo donde los usuarios pueden visualizar y administrar eventos.
+
+- **Gestión de Eventos**: Los usuarios pueden crear, guardar, actualizar y eliminar eventos directamente desde el calendario. Además, tienen la capacidad de seleccionar la fecha y hora en que ocurrirán los eventos.
+
+- **Registro y Autenticación**: Para acceder a la aplicación, los usuarios deben registrarse proporcionando su nombre, correo electrónico y contraseña. Para iniciar sesión, se requiere el correo electrónico y la contraseña asociados con la cuenta.
+
+- **Seguridad**: Se implementa un sistema de autenticación seguro para proteger los datos de los usuarios y garantizar el acceso solo a usuarios autorizados.
+
+La aplicación de Calendario de Eventos ofrece una solución completa para la gestión y organización de eventos, con una interfaz fácil de usar y funciones avanzadas de seguridad para garantizar la privacidad de los usuarios.
 
 El frontend de la aplicación se centra en la estructura y el diseño del calendario, haciendo uso de componentes de terceros para la interfaz de usuario. Se utilizan modales para la interacción con los eventos, y se configura Redux para gestionar el estado de la aplicación. Además, se implementa un CRUD local para el manejo de eventos y se hace uso de MomentJS para el manejo de fechas.
 
